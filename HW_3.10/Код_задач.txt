@@ -1,0 +1,103 @@
+/** Напишите программу, которая будет считать факториал переданного в консоли числа. */
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        long factorial = 1; // до 59!
+        System.out.println("Введите целое число для нахождения его факториала: ");
+
+        int value = new Scanner(System.in).nextInt();
+        System.out.print("Факториал числа " + value);
+
+        for (; value >= 1; value--) {
+            factorial *= value;
+            // System.out.println(factorial);
+        }
+        System.out.println(" равен " + factorial);
+    }
+}
+
+
+/**
+ * Напишите программу, которая будет находить все пары положительных целых чисел,
+ * произведение которых будет равно значению value. Например, если ввести число 6,
+ * программа должна выдать следующий результат:
+ * 1*6
+ * 2*3
+ * 3*2
+ * 6*1
+ */
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Введите положительное целое число");
+        int value = new Scanner(System.in).nextInt();
+        System.out.println("Произведение пар множителей введённого числа:");
+        for (int i = 1; i <= value; i++) {
+            if (value % i == 0) {
+                for (int j = value; j >= 1; j--) {
+                    if (j * i == value) {
+                        System.out.println(i + " * " + j + " = " + i * j);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/**
+ * Напишите программу с использованием цикла while,
+ * которая рассчитает и выведет в консоль время наполнения
+ * бассейна с учётом скоростей наполнения и опустошения.
+ */
+
+public class Main {
+    public static void main(String[] args) {
+        int volume = 1200; // объем бассейна
+        int fillingSpeed = 30; // скорость наполнения бассейна
+        int devastationSpeed = 10; // скорость опустошения бассейна
+        int filledPool = 0;
+        int countMin = 0;
+
+        while (filledPool <= volume) {
+            filledPool = filledPool + fillingSpeed - devastationSpeed;
+            countMin += 1;
+            if (filledPool == volume) {
+                break;
+            }
+            // System.out.println(filledPool + " - " + countMin);
+        }
+        System.out.println("Время наполнения бассейна " + countMin + " мин.");
+    }
+}
+
+
+/** Напишите программу-игру, в которой пользователь будет угадывать некое число,
+ * а программа, если он не угадал, будет сообщать ему, больше или меньше
+ * введённое им число, чем загаданное. */
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int value = new Random().nextInt(100);
+        System.out.println("Программа загадала целое число от 0 до 100. Угадайте его!");
+
+        while (true) {
+            int attempt = new Scanner(System.in).nextInt();
+            if (attempt > value){
+                System.out.println("Загаданное число меньше");
+            } else if (attempt < value) {
+                System.out.println("Загаданное число больше");
+            } else {
+                System.out.println("Вы угадали!");
+                break;
+            }
+        }
+    }
+}
